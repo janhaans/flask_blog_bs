@@ -1,0 +1,32 @@
+{% extends "template.html" %}
+{% block content %}
+  <h2>Welcome to the Flask Blog!</h2>
+  <form action="{{url_for('logout')}}" class="form">
+    <button type="submit" class="btn btn-danger">Logout</button>
+  </form>
+  <hr>
+  <h3> Add a new post:</h3>
+  <form action="{{url_for('add')}}" class="form-horizontal" method="POST">
+    <div class="form-group">
+      <label class="control-label col-sm-1" for="titleField">Title: </label>
+      <div class="col-sm-6">
+        <input class="form-control" type="text" name="title" id="titleField">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-1" for="postField">Post: </label>
+      <div class="col-sm-6">
+        <textarea class="form-control" id="postField" name="post" rows="5" cols="40"></textarea>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary col-sm-offset-1">Save</button>
+  </form>
+  <hr>
+  <h3>Posts:</h3>
+  {% for post in posts %}
+    <div class="panel panel-default panel-info">
+      <div class="panel-heading"><strong>Title: </strong>{{post['title']}}</div>
+      <div class="panel-body"><strong>Post: </strong> {{post['post']}}</div>
+    </div>
+  {% endfor %}
+{% endblock %}

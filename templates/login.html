@@ -1,0 +1,38 @@
+{% extends "template.html" %}
+{% block content %}
+  <div class="page-header">
+    <h2>Welcome to the Flask Blog!</h2>
+  </div>
+  <h4>Please login to access your blog.</h4>
+  <form action="" method="post" class="form-horizontal">
+    {% if error %}
+      <div class="form-group has-error has-feedback">
+        <label class="control-label col-sm-2" for="usernameField">Wrong Username</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="username" placeholder="Your username" id="usernameFiled" />
+          <span class="glyphicon glyphicon-remove form-control-feedback" area-hidden="true"></span>
+        </div>
+    {% else %}
+      <div class="form-group">
+        <div class="col-sm-6 col-sm-offset-2">
+          <input type="text" class="form-control" name="username" placeholder="Your username" id="usernameFiled"/>
+        </div>
+    {% endif %}
+    </div>
+    {% if error %}
+      <div class="form-group has-error has-feedback">
+        <label class="control-label col-sm-2" for="passwordField">Wrong Password</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="password" placeholder="Your password" id="passwordField" />
+          <span class="glyphicon glyphicon-remove form-control-feedback" area-hidden="true"></span>
+        </div>
+    {% else %}
+      <div class="form-group">
+        <div class="col-sm-6 col-sm-offset-2">
+          <input type="text" class="form-control" name="password" placeholder="Your password" id="passwordField"/>
+        </div>
+    {% endif %}
+    </div>
+    <button type="submit" class="btn btn-primary col-sm-offset-2">Login</button>
+  </form>
+{% endblock %}
